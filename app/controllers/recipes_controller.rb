@@ -1,10 +1,13 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show destroy]
+  before_action :set_recipe, only: %i[show destroy public_toggle]
+
   def index
     @recipes = current_user.recipes
   end
 
-  def show; end
+  def show
+    @recipe_food = @recipe.recipe_foods.includes(:food)
+  end
 
   def new
     @recipe = Recipe.new
@@ -12,6 +15,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = current_user.recipes.build(recipe_params)
+
     if @recipe.save
       flash[:notice] = 'Recipe was successfully created.'
       redirect_to recipes_url(@recipe)
@@ -22,9 +26,17 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
+
     flash[:notice] = 'Recipe was successfully destroyed.'
     redirect_to recipes_url
     format.json { head :no_content }
+  end
+
+  def public_toggle
+    @recipe.public = !@recipe.public
+    return unless @recipe.save
+
+    redirect_to recipe_path(@recipe), notice: "The recipe is now #{@recipe.public ? 'public' : 'private'}"
   end
 
   private
