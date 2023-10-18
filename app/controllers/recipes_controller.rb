@@ -27,9 +27,8 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
 
-    flash[:notice] = 'Recipe was successfully destroyed.'
+    flash[:notice] = 'Recipe was successfully deleted.'
     redirect_to recipes_url
-    format.json { head :no_content }
   end
 
   def public_toggle
