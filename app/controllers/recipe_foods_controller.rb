@@ -12,7 +12,7 @@ class RecipeFoodsController < ApplicationController
       flash[:notice] = 'Food created successfully.'
       redirect_to recipe_url(user_id: current_user.id, id: @recipe.id)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,6 +30,7 @@ class RecipeFoodsController < ApplicationController
   def destroy
     @recipe_food.destroy
     flash[:success] = 'Recipe Food deleted successfully.'
+    recipes_url
   end
 
   private
