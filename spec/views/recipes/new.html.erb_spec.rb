@@ -1,14 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe 'recipes/new', type: :view do
+RSpec.describe 'foods/index', type: :feature do
+  let(:user) { User.create(email: 'foo@gmail.com', name: 'foo', password: 'passsword12') }
   before(:each) do
-    assign(:recipe, Recipe.new)
+    sign_in user
+    visit new_recipe_path
   end
 
-  it 'renders new recipe form' do
-    render
-
-    # assert_select 'form[action=?][method=?]', recipes_path, 'post' do
-    # end
+  it 'renders a recipe Form' do
+    expect(page).to have_content('New recipe')
+    expect(page).to have_content('Name')
+    expect(page).to have_content('Preparation time')
+    expect(page).to have_content('Cooking time')
+    expect(page).to have_content('Description')
+    expect(page).to have_content('Public')
+  end
+  it "When I click on a Delete button, it redirects me to that recipe delete " do
+    click_on('Create Recipe')
+    expect(current_path).to eq(recipes_path)
   end
 end

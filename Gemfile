@@ -49,6 +49,20 @@ gem 'sassc-rails'
 gem 'bootstrap', '~> 5.1.3'
 
 gem 'devise'
+
+gem 'minitest', '~> 5.20'
+
+gem 'rails-html-sanitizer', '~> 1.6'
+
+gem 'thor', '~> 1.2', '>= 1.2.2'
+
+gem 'zeitwerk', '~> 2.6', '>= 2.6.12'
+
+gem 'nokogiri', '~> 1.15', '>= 1.15.4'
+
+gem 'racc', '~> 1.7', '>= 1.7.1'
+
+gem 'cancancan'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
