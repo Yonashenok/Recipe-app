@@ -1,4 +1,5 @@
 class RecipeFoodsController < ApplicationController
+
   before_action :set_recipe_foods, only: %i[edit destroy update]
   def new
     @recipe = Recipe.find(params[:recipe_id])

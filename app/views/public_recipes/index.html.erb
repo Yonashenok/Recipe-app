@@ -4,7 +4,7 @@
 <% if @public_recipes.empty? %>
     <p>No public recipes in the collection</p>
 <% end %>
-<% @public_recipes. each do |recipe| %>
+<% @public_recipes.each do |recipe| %>
 <div id="<%= dom_id recipe %>">
 <div class="card mb-3 mt-3 ms-5" style="width: 640px; margin-left: 100px;">
   <div class="row g-0">
