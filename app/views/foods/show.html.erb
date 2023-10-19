@@ -1,0 +1,24 @@
+<div class="container d-flex flex-column  justify-content-center align-items-center pt-5">
+<div class="card" style="width: 15rem;">
+  <div class="card-header">
+    <%= @food.name%>
+  </div>
+<ul class="list-group gap-3 list-group-horizontal">
+  <li class="list-group-item">Measuremant Unit</li>
+  <li class="list-group-item"><%= @food.measurement_unit %></li>
+</ul>
+<ul class="list-group gap-5 list-group-horizontal">
+  <li class="list-group-item">Food Price</li>
+  <li class="list-group-item"><%= @food.price %>$</li>
+</ul>
+<ul class="list-group gap-5 list-group-horizontal">
+  <li class="list-group-item">Food Quantity </li>
+  <li class="list-group-item"><%= @food.quantity %></li>
+</ul>
+</div>
+<div>
+  <%= link_to "Back to foods", foods_path %>
+</div>
+</div>
+
+

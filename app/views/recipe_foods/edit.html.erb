@@ -1,0 +1,33 @@
+<div class="container d-flex flex-column  justify-content-center align-items-start pt-5 size">
+<h2 class="heading">You can edit your ingraedint here</h2>
+<%= form_with model: @recipe_food, url: recipe_food_path, method: :patch, data: { turbo: false }, local: true, class:"input-form size" do |form| %>
+  <% if @recipe_food.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@recipe_food.errors.count, "error") %> prohibited this recipe_food from being saved:
+      </h2>
+      <ul>
+        <% @recipe_food.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="form-div">
+  <div class="mb-3 col-sm-5">
+    <%= form.label :food, class:"form-label" %><br>
+    <%= form.select :food_id, options_for_select(current_user.foods.collect {|food| [food.name, food.id]}, @recipe_food.food_id), { include_blank: true }, class:"form-control" %>
+  </div>
+  <div class="mb-3 col-sm-5">
+    <%= form.label :quantity, class:"form-label" %>
+    <%= form.number_field :quantity, required: true, placeholder: '1',  min: 1, class:"form-control" %>
+  </div>
+  <div class="mb-3 col-sm-2">
+    <%= form.submit 'Update', class:"btn btn-primary form-control" %>
+  </div>
+  <div>
+  <%= link_to "Back to #{@recipe_food.recipe.name}", recipe_path(@recipe_food.recipe.id), class: "btn btn-primary mt-5" %>
+</div>
+</div>
+<% end %>
+</div>
