@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
   let(:user) { User.create(email: 'example@gmail.com', name: 'foo', password: 'passsword') }
-  let(:food) { Food.create(name: 'Apple', measurement_unit: 'gram', price: 10, quantity: 30, user:)}
-  let(:recipe) { Recipe.create(name: 'buger', preparation_time: '1 hour', cooking_time: '30 minutes',
-                  description: 'Testing testing', public: false, user:)}
-    
+  let(:food) { Food.create(name: 'Apple', measurement_unit: 'gram', price: 10, quantity: 30, user:) }
+  let(:recipe) do
+    Recipe.create(name: 'buger', preparation_time: '1 hour', cooking_time: '30 minutes',
+                  description: 'Testing testing', public: false, user:)
+  end
+
   it 'should have valid attribute' do
     recipe_food = RecipeFood.new(recipe:, food:, quantity: 2)
     expect(recipe_food).to be_valid

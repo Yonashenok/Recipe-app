@@ -15,7 +15,7 @@ RSpec.describe 'foods/index', type: :feature do
     expect(page).to have_content('Description')
     expect(page).to have_content('Public')
   end
-  it "When I click on a Delete button, it redirects me to that recipe delete " do
+  it 'When I click on a Delete button, it redirects me to that recipe delete ' do
     click_on('Create Recipe')
     expect(current_path).to eq(recipes_path)
   end

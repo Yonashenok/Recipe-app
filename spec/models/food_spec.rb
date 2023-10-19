@@ -12,5 +12,4 @@ RSpec.describe Food, type: :model do
     food = Food.new(name: nil, measurement_unit: nil, price: nil, quantity: nil, user:)
     expect(food).not_to be_valid
   end
-
 end

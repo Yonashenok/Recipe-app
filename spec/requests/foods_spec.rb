@@ -32,18 +32,18 @@ RSpec.describe 'Foods', type: :request do
     context 'with valid parameters' do
       it 'creates a new Food' do
         expect do
-          post foods_url, params: { food: {name: 'Apple', measurement_unit: 'gram', price: 10 , quantity: 30}}
+          post foods_url, params: { food: { name: 'Apple', measurement_unit: 'gram', price: 10, quantity: 30 } }
         end.to change(Food, :count).by(1)
       end
     end
     context 'with invalid parameters' do
       it 'does not create a new Food' do
         expect do
-          post foods_url, params: { food: {name: nil , measurement_unit: nil, price: 10 , quantity: 30}  }
+          post foods_url, params: { food: { name: nil, measurement_unit: nil, price: 10, quantity: 30 } }
         end.to change(Food, :count).by(0)
       end
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post foods_url, params: { food: {name: nil , measurement_unit: nil, price: 10 , quantity: 30} }
+        post foods_url, params: { food: { name: nil, measurement_unit: nil, price: 10, quantity: 30 } }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end

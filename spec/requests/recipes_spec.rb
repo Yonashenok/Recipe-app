@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.describe '/recipes', type: :request do
   let(:user) { User.create(email: 'foo@gmail.com', name: 'foo', password: 'passsword12') }
-  let(:recipe) { Recipe.create(name: 'buger', preparation_time: '1 hour', cooking_time: '30 minutes',
-                  description: 'Testing testing', public: false, user:)}
+  let(:recipe) do
+    Recipe.create(name: 'buger', preparation_time: '1 hour', cooking_time: '30 minutes',
+                  description: 'Testing testing', public: false, user:)
+  end
 
-    before(:each) do
-      sign_in user
-      get foods_path
-    end
+  before(:each) do
+    sign_in user
+    get foods_path
+  end
 
   describe 'GET /index' do
     it 'renders a successful response' do
@@ -36,14 +38,14 @@ RSpec.describe '/recipes', type: :request do
     context 'with valid parameters' do
       it 'creates a new Recipe' do
         expect do
-          post recipes_url, params: { recipe: {name: 'buger', preparation_time: '1 hour', cooking_time: '30 minutes',
-            description: 'Testing testing', public: false, user:} }
+          post recipes_url, params: { recipe: { name: 'buger', preparation_time: '1 hour', cooking_time: '30 minutes',
+                                                description: 'Testing testing', public: false, user: } }
         end.to change(Recipe, :count).by(1)
       end
 
       it 'redirects to the created recipe' do
-        post recipes_url, params: { recipe: {name: 'buger', preparation_time: '1 hour', cooking_time: '30 minutes',
-          description: 'Testing testing', public: false, user:} }
+        post recipes_url, params: { recipe: { name: 'buger', preparation_time: '1 hour', cooking_time: '30 minutes',
+                                              description: 'Testing testing', public: false, user: } }
         expect(response).to redirect_to(recipes_path)
       end
     end
@@ -51,14 +53,14 @@ RSpec.describe '/recipes', type: :request do
     context 'with invalid parameters' do
       it 'does not create a new Recipe' do
         expect do
-          post recipes_url, params: { recipe: {name: nil, preparation_time: nil, cooking_time: '30 minutes',
-            description: 'Testing testing', public: false, user:} }
+          post recipes_url, params: { recipe: { name: nil, preparation_time: nil, cooking_time: '30 minutes',
+                                                description: 'Testing testing', public: false, user: } }
         end.to change(Recipe, :count).by(0)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post recipes_url, params: { recipe: {name: nil, preparation_time: nil, cooking_time: '30 minutes',
-          description: 'Testing testing', public: false, user:} }
+        post recipes_url, params: { recipe: { name: nil, preparation_time: nil, cooking_time: '30 minutes',
+                                              description: 'Testing testing', public: false, user: } }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end

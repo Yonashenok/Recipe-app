@@ -13,8 +13,8 @@ RSpec.describe 'foods/index', type: :feature do
     expect(page).to have_content('Price')
     expect(page).to have_content('Quantity')
   end
-  it "When I click on a View button, it redirects me to that food show page" do
-    find(".btn-info", match: :first).click
+  it 'When I click on a View button, it redirects me to that food show page' do
+    find('.btn-info', match: :first).click
     expect(current_path).to eq(foods_path)
   end
 end
