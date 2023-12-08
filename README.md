@@ -158,7 +158,7 @@ If you like this project please give it a Start ⭐️.
 - Thanks to the Code Reviewer(s) for the insightful feedbacks.
 - A great thanks to My coding partner(s), morning session team, and standup team for their contributions.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## ❓ FAQ <a name="faq"></a>
 
