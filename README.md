@@ -46,7 +46,7 @@ Recipe App keeps track of all your recipes and ingredients. It will allow you to
 - **shopping list**
 - **public recipes**
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
